@@ -1,26 +1,31 @@
 require('dotenv').config();
-const massive = require('massive')
-const express = require('express'),
-      userCtrl = require('./controllers/user'),
-      postCtrl = require('./controllers/posts')
+const express = require('express');
+const massive = require('massive');
+const userCtrl = require('./controllers/user');
+const postCtrl = require('./controllers/posts');
 
+const { SERVER_PORT, CONNECTION_STRING } = process.env;
 
 const app = express();
 
 app.use(express.json());
 
 massive({
-    connectionString: process.env.CONNECTION_STRING,
-    ssl: {rejectUnauthorized: false}})
-    .then((dbInstance) => {
-        app.set('db', dbInstance);
+    connectionString: CONNECTION_STRING,
+    ssl: {
+        rejectUnauthorized: false,
+    }
+})
+    .then((db) => {
+        app.set('db', db);
+        console.log('Database connection established successfully')
     });
 
 //Auth Endpoints
-app.post('/api/auth/register', userCtrl.register);
-app.post('/api/auth/login', userCtrl.login);
-app.get('/api/auth/me', userCtrl.getUser);
-app.post('/api/auth/logout', userCtrl.logout);
+//app.post('/api/auth/register', userCtrl.register);
+//app.post('/api/auth/login', userCtrl.login);
+//app.get('/api/auth/me', userCtrl.getUser);
+//app.post('/api/auth/logout', userCtrl.logout);
 
 //Post Endpoints
 app.get('/api/posts', postCtrl.readPosts);
