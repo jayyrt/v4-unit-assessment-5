@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { Component } from 'react';
+//import { HashRouter, Route, Switch, Redirect } from 'react-router-dom';
+import axios from 'axios';
 import './App.css';
 
-function App() {
-  return (
-    <div className='App'></div>
-  )
-};
+class App extends Component {
+ 
+  render() {
+    return (
+      <div></div>
+  //   <HashRouter>
+  //      <Switch>
+  //    <Route />
+  //      </Switch>
+  //   </HashRouter>
+    );
+  }
+}
 
 export default App;
