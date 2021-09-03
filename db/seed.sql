@@ -13,3 +13,9 @@
 -- author_id INTEGER REFERENCES helo_users(id),
 -- date_created TIMESTAMP
 -- );
+
+-- SELECT id AS post_id
+-- FROM helo_posts;
+
+-- SELECT username AS author_username
+-- FROM helo_users;
