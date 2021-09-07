@@ -23,9 +23,9 @@ class Auth extends Component {
 
   login() {
     axios.post('/api/auth/login', this.state)
-      .then(res => {
+      .then(res => 
         this.props.history.push
-      })
+      )
       .catch(err => {
         console.log(err)
         this.setState({errorMsg: 'Incorrect username or password!'})
@@ -34,9 +34,9 @@ class Auth extends Component {
 
   register() {
     axios.post('/api/auth/register', this.state)
-      .then(res => {
+      .then(res => 
         this.props.history.push
-      })
+      )
       .catch(err => {
         console.log(err)
         this.setState({errorMsg: 'Username taken!'})
